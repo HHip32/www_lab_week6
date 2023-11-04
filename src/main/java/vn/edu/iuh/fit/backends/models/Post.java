@@ -42,4 +42,17 @@ public class Post {
     @JoinColumn(name = "authorId", unique = true)
     private User author;
 
+    public Post(Post parent, String title, String metaTitle, String summary, boolean published, Instant createdAt, Instant updatedAt, Instant publishedAt, String content, Set<Post> posts, User author) {
+        this.parent = parent;
+        this.title = title;
+        this.metaTitle = metaTitle;
+        this.summary = summary;
+        this.published = published;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+        this.publishedAt = publishedAt;
+        this.content = content;
+        this.posts = posts;
+        this.author = author;
+    }
 }

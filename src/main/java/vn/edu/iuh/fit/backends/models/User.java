@@ -2,7 +2,9 @@ package vn.edu.iuh.fit.backends.models;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.Instant;
 import java.util.Set;
@@ -11,6 +13,8 @@ import java.util.Set;
 @Table(name = "user")
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class User {
     @Id
     @Column(name = "id")
@@ -41,4 +45,19 @@ public class User {
     private Set<PostComment> comments;
     @OneToMany(mappedBy = "author", cascade = CascadeType.ALL)
     private Set<Post> posts;
+
+    public User(String firstName, String middleName, String lastName, String mobile, String email, String passwordHash, Instant registerAt, Instant lastLogin, String intro, String profile, Set<PostComment> comments, Set<Post> posts) {
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.mobile = mobile;
+        this.email = email;
+        this.passwordHash = passwordHash;
+        this.registerAt = registerAt;
+        this.lastLogin = lastLogin;
+        this.intro = intro;
+        this.profile = profile;
+        this.comments = comments;
+        this.posts = posts;
+    }
 }
